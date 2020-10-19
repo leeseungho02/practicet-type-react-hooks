@@ -80,7 +80,7 @@ class App extends React.Component {
 
 ## 📢 공부 진행
 
-- [ ] useState
+- [X] useState
 - [ ] useTitle
 - [ ] useInput
 - [ ] usePageLeave
