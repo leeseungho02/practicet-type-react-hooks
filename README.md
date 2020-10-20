@@ -23,7 +23,7 @@
 - 복잡한 컴포넌트는 이해하기 어려움
 - Class 컴포넌트는 인간과 기계 모두를 혼란스럽게 함
 
-### 사용 규칙
+### 참고 사이트
 
 [Hook 소개](https://ko.reactjs.org/docs/hooks-intro.html) <br>
 
