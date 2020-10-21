@@ -107,7 +107,7 @@ class App extends React.Component {
 
 - [X] useState
 - [ ] useTitle
-- [ ] useInput
+- [X] useInput
 - [ ] usePageLeave
 - [ ] useClick
 - [ ] useFadeIn
