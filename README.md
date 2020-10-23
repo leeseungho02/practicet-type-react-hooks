@@ -102,6 +102,33 @@ class App extends React.Component {
 
 </details>
 
+<details markdown="3">
+
+<summary>📑 useInput</summary>
+
+### useInput이란?
+
+리액트 훅으로 input 역활을 제어 하는 것
+
+- 예시 (useInput.js 참고)
+``` javascript
+function App() {
+	const maxLen = (value) => value.length < 10;
+	const name = useInput("your name", maxLen);
+	return (
+	<div className="App">
+		<h1>Hello</h1>
+      	<input placeholder="Name" {...name} />
+    </div>
+  );
+}
+```
+
+### 사용 규칙
+
+[]() <br>
+
+</details>
 
 ## 📢 공부 진행
 
