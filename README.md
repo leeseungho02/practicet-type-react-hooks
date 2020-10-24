@@ -108,7 +108,7 @@ class App extends React.Component {
 
 ### useInput이란?
 
-리액트 훅으로 input 역활을 제어 하는 것
+input 역활을 제어 하는 것
 
 - 예시 (useInput.js 참고)
 ``` javascript
@@ -121,6 +121,45 @@ function App() {
       	<input placeholder="Name" {...name} />
     </div>
   );
+}
+```
+
+</details>
+
+<details markdown="4">
+
+<summary>📑 useTabs</summary>
+
+### useTabs이란?
+
+웹사이트에 메뉴 또는 무엇이든 간에 tab을 사용하기 매우 쉽게 만들어주는 것
+
+- 예시 (useTabs.js 참고)
+``` javascript
+const content = [
+    {
+        tab: "Section 1",
+        content: "I'm the content of the Section 1"
+    },
+    {
+        tab: "Section 2",
+        content: "I'm the content of the Section 2"
+    }
+];
+
+function App() {
+    const { currnetItem, changeItem } = useTabs(0, content);
+    return (
+        <div className="App">
+            <h1>Hello</h1>
+            {content.map((section, index) => (
+                <button key={index} onClick={() => changeItem(index)}>
+                    {section.tab}
+                </button>
+            ))}
+            <div>{currnetItem.content}</div>
+        </div>
+    );
 }
 ```
 
