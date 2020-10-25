@@ -110,7 +110,7 @@ class App extends React.Component {
 
 input 역활을 제어 하는 것
 
-- 예시 [useInput.js 참고](./useInput.js)
+- 예시 - [useInput.js 참고](./useInput.js)
 ``` javascript
 function App() {
 	const maxLen = (value) => value.length < 10;
@@ -134,7 +134,7 @@ function App() {
 
 웹사이트에 메뉴 또는 무엇이든 간에 tab을 사용하기 매우 쉽게 만들어주는 것
 
-- 예시 [useTabs.js 참고](./useTabs.js)
+- 예시 - [useTabs.js 참고](./useTabs.js)
 ``` javascript
 const content = [
     {
