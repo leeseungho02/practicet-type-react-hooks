@@ -165,6 +165,33 @@ function App() {
 
 </details>
 
+<details markdown="5">
+
+<summary>📑 useTitle</summary>
+
+### useTitle이란?
+
+react document의 title을 몇개의 hoots와 함께 바꾸는 것
+
+- 예시 - [useTitle.js 참고](./useTitle.js)
+``` javascript
+function App() {
+    const titleUpdater = useTitle("Loading...");
+    setTimeout(() => titleUpdater("home"), 5000);
+    return (
+        <div className="App">
+            <h1>Hello</h1>
+        </div>
+    );
+}
+```
+
+### 사용 규칙
+
+[]() <br>
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
