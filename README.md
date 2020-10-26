@@ -191,7 +191,7 @@ function App() {
 ## 📢 공부 진행
 
 - [X] useState
-- [ ] useTitle
+- [X] useTitle
 - [X] useInput
 - [ ] usePageLeave
 - [ ] useClick
