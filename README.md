@@ -212,7 +212,7 @@ function App() {
 
 </details>
 
-<details markdown="6">
+<details markdown="7">
 
 <summary>📑 useConfirm</summary>
 
@@ -237,6 +237,29 @@ function App() {
 
 </details>
 
+<details markdown="8">
+
+<summary>📑 usePreventLeave</summary>
+
+### usePreventLeave이란?
+
+
+
+- 예시 - [usePreventLeave.js 참고](./usePreventLeave.js)
+``` javascript
+function App() {
+    const { enablePrevent, disaPrevent } = usePreventLeave();
+    return (
+        <div className="App">
+            <button onClick={enablePrevent}>Protect</button>
+            <button onClick={disaPrevent}>Unprotect</button>
+        </div>
+    );
+}
+```
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
@@ -244,7 +267,8 @@ function App() {
 - [x] useTabs
 - [X] useTitle
 - [X] useClick
-- [X] useConfirm
+- [X] useConfirm - hook 사용 x
+- [ ] usePreventLeave - hook 사용 x
 - [ ] usePageLeave
 - [ ] useFadeIn
 - [ ] useFullscreen
@@ -252,6 +276,5 @@ function App() {
 - [ ] useNetwork
 - [ ] useNotification
 - [ ] useScroll
-- [ ] usePreventLeave
 - [ ] useAxios
 - [ ] NPM package 등록

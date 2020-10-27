@@ -1,5 +1,5 @@
 export const useClick = (onClick) => {
-    if(typeof onclick !== "function"){
+    if (typeof onclick !== "function") {
         return;
     }
     const element = useRef();
