@@ -199,6 +199,15 @@ function App() {
 
 - 예시 - [useClick.js 참고](./useClick.js)
 ``` javascript
+function App() {
+    const onClick = () => console.log("hello");
+    const title = useClick(onClick);
+    return (
+        <div className="App">
+            <h1 ref={title}>Hello</h1>
+        </div>
+    );
+}
 ```
 
 </details>
