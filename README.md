@@ -191,18 +191,18 @@ function App() {
 ## 📢 공부 진행
 
 - [X] useState
-- [X] useTitle
 - [X] useInput
-- [ ] usePageLeave
-- [ ] useClick
-- [ ] useFadeIn
-- [ ] useFullscreen
-- [ ] useHover
-- [ ] useNetwork
-- [ ] useNotification
-- [ ] useScroll
 - [x] useTabs
-- [ ] usePreventLeave
-- [ ] useConfirm
-- [ ] useAxios
-- [ ] NPM package 등록
+- [X] useTitle
+- [] useClick
+- [] usePageLeave
+- [] useFadeIn
+- [] useFullscreen
+- [] useHover
+- [] useNetwork
+- [] useNotification
+- [] useScroll
+- [] usePreventLeave
+- [] useConfirm
+- [] useAxios
+- [] NPM package 등록
