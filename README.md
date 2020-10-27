@@ -244,7 +244,7 @@ function App() {
 - [x] useTabs
 - [X] useTitle
 - [X] useClick
-- [ ] useConfirm
+- [X] useConfirm
 - [ ] usePageLeave
 - [ ] useFadeIn
 - [ ] useFullscreen
