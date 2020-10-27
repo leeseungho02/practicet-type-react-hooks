@@ -268,7 +268,7 @@ function App() {
 - [X] useTitle
 - [X] useClick
 - [X] useConfirm - hook 사용 x
-- [ ] usePreventLeave - hook 사용 x
+- [X] usePreventLeave - hook 사용 x
 - [ ] usePageLeave
 - [ ] useFadeIn
 - [ ] useFullscreen
