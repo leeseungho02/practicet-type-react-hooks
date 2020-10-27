@@ -212,13 +212,39 @@ function App() {
 
 </details>
 
+<details markdown="6">
+
+<summary>📑 useConfirm</summary>
+
+### useConfirm이란?
+
+
+
+- 예시 - [useConfirm.js 참고](./useConfirm.js)
+``` javascript
+function App() {
+    const deleteWorld = () => console.log("Deleting the world...");
+    const abort = () => console.log("Aborted");
+    const confirmDelete = useConfirm("Are you sure", deleteWorld, abort);
+    return (
+        <div className="App">
+            <h1>Hello</h1>
+            <button onClick={confirmDelete}>Delete the world</button>
+        </div>
+    );
+}
+```
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
 - [X] useInput
 - [x] useTabs
 - [X] useTitle
-- [ ] useClick
+- [X] useClick
+- [ ] useConfirm
 - [ ] usePageLeave
 - [ ] useFadeIn
 - [ ] useFullscreen
@@ -227,6 +253,5 @@ function App() {
 - [ ] useNotification
 - [ ] useScroll
 - [ ] usePreventLeave
-- [ ] useConfirm
 - [ ] useAxios
 - [ ] NPM package 등록
