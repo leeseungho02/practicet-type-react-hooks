@@ -336,6 +336,32 @@ function App() {
 
 </details>
 
+<details markdown="12">
+
+<summary>📑 useNetwork</summary>
+
+### useNetwork이란?
+
+
+
+- 예시 - [useNetwork.js 참고](./useNetwork.js)
+``` javascript
+function App() {
+    const handleNetworkChange = (online) => {
+        console.log(online ? "We just went online" : "We are offline");
+    };
+    const onLine = useNetwork(handleNetworkChange);
+    return (
+        <div className="App">
+            <h1>Hello</h1>
+            <h1>{onLine ? "Online" : "Offline"}</h1>
+        </div>
+    );
+}
+```
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
@@ -347,8 +373,8 @@ function App() {
 - [X] useConfirm - hook 사용 x
 - [X] usePreventLeave - hook 사용 x
 - [X] useBeforeLeave
-- [ ] useFadeIn
-- [ ] useNetwork
+- [X] useFadeIn
+- [X] useNetwork
 - [ ] useScroll
 - [ ] useFullscreen
 - [ ] useNotification
