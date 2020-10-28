@@ -307,6 +307,35 @@ function App() {
 
 </details>
 
+<details markdown="11">
+
+<summary>📑 useFadeIn</summary>
+
+### useFadeIn이란?
+
+
+
+- 예시 - [useFadeIn.js 참고](./useFadeIn.js)
+``` javascript
+function App() {
+    const fadeInH1 = useFadeIn(1, 2);
+    const fadeInP = useFadeIn(2, 3);
+    return (
+        <div className="App">
+            <h1 {...fadeInH1}>Hello</h1>
+            <p {...fadeInP}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+                voluptatem debitis accusantium veritatis! Amet, minus consequatur eius
+                ut dolorum expedita consectetur corrupti animi incidunt nihil iste illo,
+                iure, voluptatem voluptates.
+        </p>
+        </div>
+    );
+}
+```
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
