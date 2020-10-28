@@ -214,6 +214,29 @@ function App() {
 
 <details markdown="7">
 
+<summary>📑 useHover</summary>
+
+### useHover이란?
+
+
+
+- 예시 - [useHover.js 참고](./useHover.js)
+``` javascript
+function App() {
+    const onHover = () => console.log("hello");
+    const title = useHover(onHover);
+    return (
+        <div className="App">
+            <h1 ref={title}>Hello</h1>
+        </div>
+    );
+}
+```
+
+</details>
+
+<details markdown="8">
+
 <summary>📑 useConfirm</summary>
 
 ### useConfirm이란?
@@ -237,7 +260,7 @@ function App() {
 
 </details>
 
-<details markdown="8">
+<details markdown="9">
 
 <summary>📑 usePreventLeave</summary>
 
