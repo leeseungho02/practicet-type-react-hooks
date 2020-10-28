@@ -274,8 +274,32 @@ function App() {
     const { enablePrevent, disaPrevent } = usePreventLeave();
     return (
         <div className="App">
+            <h1>Hello</h1>
             <button onClick={enablePrevent}>Protect</button>
             <button onClick={disaPrevent}>Unprotect</button>
+        </div>
+    );
+}
+```
+
+</details>
+
+<details markdown="10">
+
+<summary>📑 useBeforeLeave</summary>
+
+### useBeforeLeave이란?
+
+탭을 닫을 때 실행되는 함수
+
+- 예시 - [useBeforeLeave.js 참고](./useBeforeLeave.js)
+``` javascript
+function App() {
+    const begForLife = () => console.log("Pls dont leave");
+    useBeforeLeave(begForLife);
+    return (
+        <div className="App">
+            <h1>Hello</h1>
         </div>
     );
 }
@@ -293,7 +317,7 @@ function App() {
 - [X] useHover
 - [X] useConfirm - hook 사용 x
 - [X] usePreventLeave - hook 사용 x
-- [ ] usePageLeave
+- [X] useBeforeLeave
 - [ ] useFadeIn
 - [ ] useNetwork
 - [ ] useScroll
