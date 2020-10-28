@@ -267,14 +267,14 @@ function App() {
 - [x] useTabs
 - [X] useTitle
 - [X] useClick
+- [X] useHover
 - [X] useConfirm - hook 사용 x
 - [X] usePreventLeave - hook 사용 x
 - [ ] usePageLeave
 - [ ] useFadeIn
-- [ ] useFullscreen
-- [ ] useHover
 - [ ] useNetwork
-- [ ] useNotification
 - [ ] useScroll
+- [ ] useFullscreen
+- [ ] useNotification
 - [ ] useAxios
 - [ ] NPM package 등록
