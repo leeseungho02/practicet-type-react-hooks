@@ -362,6 +362,30 @@ function App() {
 
 </details>
 
+<details markdown="13">
+
+<summary>📑 useScroll</summary>
+
+### useScroll이란?
+
+
+
+- 예시 - [useScroll.js 참고](./useScroll.js)
+``` javascript
+function App() {
+    const { y } = useScroll();
+    return (
+        <div className="App" style={{ height: "1000vh" }}>
+            <h1 style={{ position: "fixed", color: y > 1000 ? "blue" : "red" }}>
+                Hello
+        </h1>
+        </div>
+    );
+}
+```
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
@@ -375,7 +399,7 @@ function App() {
 - [X] useBeforeLeave
 - [X] useFadeIn
 - [X] useNetwork
-- [ ] useScroll
+- [X] useScroll
 - [ ] useFullscreen
 - [ ] useNotification
 - [ ] useAxios
