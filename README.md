@@ -386,6 +386,39 @@ function App() {
 
 </details>
 
+<details markdown="14">
+
+<summary>📑 useFullscreen</summary>
+
+### useFullscreen이란?
+
+
+
+- 예시 - [useFullscreen.js 참고](./useFullscreen.js)
+``` javascript
+function App() {
+    const onFullS = (isFull) => {
+        console.log(isFull ? "We are full" : "We are small");
+    };
+    const { element, triggerFull, exitFull } = useFullscreen(onFullS);
+    return (
+        <div className="App">
+            <h1>Hello</h1>
+            <div ref={element}>
+                <img
+                    src="https://mblogthumb-phinf.pstatic.net/MjAxODAyMDZfMTk0/MDAxNTE3OTA5NDQ3MjYy._A5goNQD2IUU1ZVepodSGGYRkzsj6Qzvo-7N40S-OzMg.ITZqPfqEABCTd4tuLxQrMXY-nRU40sD2tMpDZRkA_34g.JPEG.xbeebee/%EC%9B%B0%EC%8B%9C%EC%BD%94%EA%B8%B0.jpg?type=w800"
+                    alt="img"
+                />
+                <button onClick={exitFull}>Exit Fullscreen</button>
+            </div>
+            <button onClick={triggerFull}>Make Fullscreen</button>
+        </div>
+    );
+}
+```
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
@@ -400,7 +433,7 @@ function App() {
 - [X] useFadeIn
 - [X] useNetwork
 - [X] useScroll
-- [ ] useFullscreen
+- [X] useFullscreen
 - [ ] useNotification
 - [ ] useAxios
 - [ ] NPM package 등록
