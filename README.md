@@ -419,6 +419,33 @@ function App() {
 
 </details>
 
+<details markdown="15">
+
+<summary>📑 useNotification</summary>
+
+### useNotification이란?
+
+
+
+- 예시 - [useNotification.js 참고](./useNotification.js)
+``` javascript
+function App() {
+    const triggerNotif = useNotification("Can I steal your kimchi?", {
+        body: "I love kimchi dont you"
+    });
+    return (
+        <div className="App">
+            <h1>Hello</h1>
+            <button onClick={triggerNotif}>Hello</button>
+        </div>
+    );
+}
+```
+
+[Notification API](https://developer.mozilla.org/ko/docs/Web/API/notification)
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
@@ -434,6 +461,6 @@ function App() {
 - [X] useNetwork
 - [X] useScroll
 - [X] useFullscreen
-- [ ] useNotification
+- [X] useNotification
 - [ ] useAxios
 - [ ] NPM package 등록
