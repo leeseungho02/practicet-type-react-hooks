@@ -446,6 +446,34 @@ function App() {
 
 </details>
 
+<details markdown="16">
+
+<summary>📑 useAxios</summary>
+
+### useAxios이란?
+
+
+
+- 예시 - [useAxios.js 참고](./useAxios.js)
+``` javascript
+function App() {
+    const { loading, data, refetch } = useAxios({
+        url:
+            "https://cors-anywhere.herokuapp.com/https://yts.am/api/v2/list_movies.json"
+    });
+    console.log(loading, data, JSON.stringify(data), refetch);
+    return (
+        <div className="App">
+            <h1>{data && data.status}</h1>
+            <h1>{loading && "Loading"}</h1>
+            <button onClick={refetch}>Refetch</button>
+        </div>
+    );
+}
+```
+
+</details>
+
 ## 📢 공부 진행
 
 - [X] useState
@@ -462,5 +490,5 @@ function App() {
 - [X] useScroll
 - [X] useFullscreen
 - [X] useNotification
-- [ ] useAxios
+- [X] useAxios
 - [ ] NPM package 등록
