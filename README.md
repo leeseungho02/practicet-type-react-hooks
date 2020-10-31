@@ -103,6 +103,8 @@ class App extends React.Component {
 
 </details>
 
+## 📢 Custom Hooks
+
 <details markdown="3">
 
 <summary>📑 useInput</summary>
@@ -111,8 +113,24 @@ class App extends React.Component {
 
 input 역활을 제어 하는 것
 
-- 예시 - [useInput.js 참고](./useInput.js)
 ``` javascript
+const useInput = (initialValue, validator) => {
+    const [value, setValue] = useState(initialValue);
+    const onChange = (event) => {
+        const {
+            target: { value }
+        } = event;
+        let willUpdate = true;
+        if (typeof validator === "function") {
+            willUpdate = validator(value);
+        }
+        if (willUpdate) {
+            setValue(value);
+        }
+    };
+    return { value, onChange };
+};
+
 function App() {
 	const maxLen = (value) => value.length < 10;
 	const name = useInput("your name", maxLen);
@@ -135,8 +153,18 @@ function App() {
 
 웹사이트에 메뉴 또는 무엇이든 간에 tab을 사용하기 매우 쉽게 만들어주는 것
 
-- 예시 - [useTabs.js 참고](./useTabs.js)
 ``` javascript
+const useTabs = (initialTab, allTabs) => {
+    if (!allTabs || !Array.isArray(allTabs)) {
+        return;
+    }
+    const [currentIndex, setCurrentIndex] = useState(initialTab);
+    return {
+        currnetItem: allTabs[currentIndex],
+        changeItem: setCurrentIndex
+    };
+};
+
 const content = [
     {
         tab: "Section 1",
@@ -174,8 +202,17 @@ function App() {
 
 react document의 title을 몇개의 hoots와 함께 바꾸는 것
 
-- 예시 - [useTitle.js 참고](./useTitle.js)
 ``` javascript
+const useTitle = (initialTitle) => {
+    const [title, setTitle] = useState(initialTitle);
+    const updateTitle = () => {
+        const htmlTitle = document.querySelector("title");
+        htmlTitle.innerText = title;
+    };
+    useEffect(updateTitle, [title]);
+    return setTitle;
+};
+
 function App() {
     const titleUpdater = useTitle("Loading...");
     setTimeout(() => titleUpdater("home"), 5000);
@@ -195,10 +232,27 @@ function App() {
 
 ### useClick이란?
 
+유저가 element를 클릭한 시점으로 이벤트 주기
 
-
-- 예시 - [useClick.js 참고](./useClick.js)
 ``` javascript
+const useClick = (onClick) => {
+    if (typeof onclick !== "function") {
+        return;
+    }
+    const element = useRef();
+    useEffect(() => {
+        if (element.current) {
+            element.current.addEventListener("click", onClick);
+        }
+        return () => {
+            if (element.current) {
+                element.current.removeEventListener("click", onClick);
+            }
+        };
+    }, []);
+    return element;
+};
+
 function App() {
     const onClick = () => console.log("hello");
     const title = useClick(onClick);
@@ -218,10 +272,27 @@ function App() {
 
 ### useHover이란?
 
+유저가 element를 호버한 시점으로 이벤트 주기
 
-
-- 예시 - [useHover.js 참고](./useHover.js)
 ``` javascript
+const useHover = (onHover) => {
+    if (typeof onHover !== "function") {
+        return;
+    }
+    const element = useRef();
+    useEffect(() => {
+        if (element.current) {
+            element.current.addEventListener("mouseenter", onHover);
+        }
+        return () => {
+            if (element.current) {
+                element.current.removeEventListener("mouseenter", onHover);
+            }
+        };
+    }, []);
+    return element;
+};
+
 function App() {
     const onHover = () => console.log("hello");
     const title = useHover(onHover);
@@ -241,10 +312,26 @@ function App() {
 
 ### useConfirm이란?
 
+유저가 어떠한 이벤트를 발생 시 여부를 확인 하는 것
 
-
-- 예시 - [useConfirm.js 참고](./useConfirm.js)
 ``` javascript
+const useConfirm = (message = "", onConfirm, onCancel) => {
+    if (!onConfirm || typeof onConfirm !== "function") {
+        return;
+    }
+    if (onCancel && typeof onCancel !== "function") {
+        return;
+    }
+    const confirmAction = () => {
+        if (confirm(message)) {
+            onConfirm();
+        } else {
+            onCancel();
+        }
+    };
+    return confirmAction;
+};
+
 function App() {
     const deleteWorld = () => console.log("Deleting the world...");
     const abort = () => console.log("Aborted");
@@ -266,10 +353,20 @@ function App() {
 
 ### usePreventLeave이란?
 
+유저가 변경사항이나 무엇이든간에 저장하지 않고 페이지를 벗어나길 원할 때 확인하는 것
 
-
-- 예시 - [usePreventLeave.js 참고](./usePreventLeave.js)
 ``` javascript
+const usePreventLeave = () => {
+    const listener = (event) => {
+        event.preventDefault();
+        event.returnValue = "";
+    };
+    const enablePrevent = () => window.addEventListener("beforeunload", listener);
+    const disaPrevent = () =>
+        window.removeEventListener("beforeunload", listener);
+    return { enablePrevent, disaPrevent };
+};
+
 function App() {
     const { enablePrevent, disaPrevent } = usePreventLeave();
     return (
@@ -290,10 +387,25 @@ function App() {
 
 ### useBeforeLeave이란?
 
-탭을 닫을 때 실행되는 함수
+유저가 페이지를 벗어나는 시점을 발견하고 함수를 실행
 
-- 예시 - [useBeforeLeave.js 참고](./useBeforeLeave.js)
 ``` javascript
+const useBeforeLeave = (onBefore) => {
+    if (typeof onBefore !== "function") {
+        return;
+    }
+    const handle = (event) => {
+        const { clientY } = event;
+        if (clientY <= 0) {
+            onBefore();
+        }
+    };
+    useEffect(() => {
+        document.addEventListener("mouseleave", handle);
+        return () => document.removeEventListener("mouseleave", handle);
+    }, []);
+};
+
 function App() {
     const begForLife = () => console.log("Pls dont leave");
     useBeforeLeave(begForLife);
@@ -313,10 +425,24 @@ function App() {
 
 ### useFadeIn이란?
 
+어떤 element든 상관없이 애니메이션을 element 안으로 서서히 사라지게 만드는 것
 
-
-- 예시 - [useFadeIn.js 참고](./useFadeIn.js)
 ``` javascript
+const useFadeIn = (duration = 1, delay = 0) => {
+    if (typeof duration !== "number" || typeof delay !== "number") {
+        return;
+    }
+    const element = useRef();
+    useEffect(() => {
+        if (element.current) {
+            const { current } = element;
+            current.style.transition = `opacity ${duration}s ease-in-out ${delay}s`;
+            current.style.opacity = 1;
+        }
+    }, []);
+    return { ref: element, style: { opacity: 0 } };
+};
+
 function App() {
     const fadeInH1 = useFadeIn(1, 2);
     const fadeInP = useFadeIn(2, 3);
@@ -342,10 +468,28 @@ function App() {
 
 ### useNetwork이란?
 
+현재 Online or Offline 상태인지를 감지하는 것
 
-
-- 예시 - [useNetwork.js 참고](./useNetwork.js)
 ``` javascript
+const useNetwork = (onChange) => {
+    const [status, setStatus] = useState(navigator.onLine);
+    const handleChange = (event) => {
+        if (typeof onChange === "function") {
+            onChange(navigator.onLine);
+        }
+        setStatus(navigator.onLine);
+    };
+    useEffect(() => {
+        window.addEventListener("online", handleChange);
+        window.addEventListener("offline", handleChange);
+        return () => {
+            window.removeEventListener("online", handleChange);
+            window.removeEventListener("offline", handleChange);
+        };
+    }, []);
+    return status;
+};
+
 function App() {
     const handleNetworkChange = (online) => {
         console.log(online ? "We just went online" : "We are offline");
@@ -368,10 +512,21 @@ function App() {
 
 ### useScroll이란?
 
+스크롤을 사용할 때를 감지해 알려주는 것
 
-
-- 예시 - [useScroll.js 참고](./useScroll.js)
 ``` javascript
+const useScroll = () => {
+    const [status, setStatus] = useState({ x: 0, y: 0 });
+    const onScroll = () => {
+        setStatus({ x: window.scrollX, y: window.scrollY });
+    };
+    useEffect(() => {
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+    return status;
+};
+
 function App() {
     const { y } = useScroll();
     return (
@@ -392,10 +547,45 @@ function App() {
 
 ### useFullscreen이란?
 
+어떤 element든 풀크스린으로 만들거나 일반 화면으로 돌아가게 하는 것
 
-
-- 예시 - [useFullscreen.js 참고](./useFullscreen.js)
 ``` javascript
+const useFullscreen = (callback) => {
+    const element = useRef();
+    const runCb = (isFull) => {
+        if (callback && typeof callback === "function") {
+            callback(isFull);
+        }
+    };
+    const triggerFull = () => {
+        if (element.current) {
+            if (element.current.requestFullscreen) {
+                element.current.requestFullscreen();
+            } else if (element.current.mozRequestFullscreen) {
+                element.current.mozRequestFullscreen();
+            } else if (element.current.webkitRequestFullscreen) {
+                element.current.webkitRequestFullscreen();
+            } else if (element.current.msRequestFullscreen) {
+                element.current.msRequestFullscreen();
+            }
+            runCb(true);
+        }
+    };
+    const exitFull = () => {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+        runCb(false);
+    };
+    return { element, triggerFull, exitFull };
+};
+
 function App() {
     const onFullS = (isFull) => {
         console.log(isFull ? "We are full" : "We are small");
@@ -425,10 +615,29 @@ function App() {
 
 ### useNotification이란?
 
+notification API를 사용할 때 유저에게 알람을 보내주는 것
 
-
-- 예시 - [useNotification.js 참고](./useNotification.js)
 ``` javascript
+const useNotification = (title, options) => {
+    if (!("Notification" in window)) {
+        return;
+    }
+    const fireNotif = () => {
+        if (Notification.permission !== "granted") {
+            Notification.requestPermission().then((permission) => {
+                if (permission === "granted") {
+                    new Notification(title, options);
+                } else {
+                    return;
+                }
+            });
+        } else {
+            new Notification(title, options);
+        }
+    };
+    return fireNotif;
+};
+
 function App() {
     const triggerNotif = useNotification("Can I steal your kimchi?", {
         body: "I love kimchi dont you"
@@ -452,10 +661,46 @@ function App() {
 
 ### useAxios이란?
 
+HTTP requests client axios을 위한 wrapper 같은 것
 
-
-- 예시 - [useAxios.js 참고](./useAxios.js)
 ``` javascript
+const useAxios = (options, axiosInstance = defaultAxios) => {
+    const [state, setSate] = useState({
+        loading: true,
+        error: null,
+        data: null
+    });
+    const [trigger, setTrigger] = useState(0);
+    if (!options.url) {
+        return;
+    }
+    const refetch = () => {
+        setSate({
+            ...state,
+            loading: true
+        });
+        setTrigger(Date.now());
+    };
+    useEffect(() => {
+        axiosInstance(options)
+            .then((data) => {
+                setSate({
+                    ...state,
+                    loading: false,
+                    data
+                });
+            })
+            .catch((error) => {
+                setSate({
+                    ...state,
+                    loading: false,
+                    error
+                });
+            });
+    }, [trigger]);
+    return { ...state, refetch };
+};
+
 function App() {
     const { loading, data, refetch } = useAxios({
         url:
